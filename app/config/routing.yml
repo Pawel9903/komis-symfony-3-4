@@ -2,16 +2,16 @@ app:
     resource: '@AppBundle/Controller/'
     type: annotation
 
-cars_index:
+car_index:
   path: /
-  defaults: {_controller: AppBundle:Cars:index}
+  defaults: {_controller: AppBundle:Car:index}
 
-cars_cars:
+car_cars:
   path: /cars
-  defaults: {_controller: AppBundle:Cars:cars}
+  defaults: {_controller: AppBundle:Car:cars}
 
-cars_add:
+car_add:
   path: /cars/add
-  defaults: {_controller: AppBundle:Cars:add}
+  defaults: {_controller: AppBundle:Car:add}
 
 

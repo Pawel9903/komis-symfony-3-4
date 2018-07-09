@@ -1,13 +1,20 @@
 {% extends 'templates/base.html.twig' %}
 
 {% block body %}
-<h1 class="">Komis</h1>
+<h1 class="">Ogłoszenia</h1>
 
 {% for car in cars %}
-    <p>{{ car.mark }}</p>
-    <p>{{ car.color }}</p>
-    <p>{{ car.price }}</p>
-    <p>{{ car.country }}</p>
+    <div class="my-5 border">
+        <p><span>Marka: </span>{{ car.mark }}</p>
+        <p><span>Model: </span>{{ car.model }}</p>
+        <p><span>Cena: </span>{{ car.price }}</p>
+        <p><span>Kolor: </span>{{ car.color }}</p>
+        <p><span>Silnik: </span>{{ car.engine }}</p>
+        <p><span>Ilość koni: </span>{{ car.horsepower }}</p>
+        <p><span>Rodzaj paliwa: </span>{{ car.fuel }}</p>
+        <p><span>Rodzaj nadwozia: </span>{{ car.body }}</p>
+        <p><span>Opis: </span>{{ car.description }}</p>
+    </div>
 {% endfor %}
 
 {% endblock %}
