@@ -1,0 +1,13 @@
+{% extends 'templates/base.html.twig' %}
+
+{% block body %}
+<h1 class="">Komis</h1>
+
+{% for car in cars %}
+    <p>{{ car.mark }}</p>
+    <p>{{ car.color }}</p>
+    <p>{{ car.price }}</p>
+    <p>{{ car.country }}</p>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,11 @@
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+komis_index:
+  path: /
+  defaults: {_controller: AppBundle:Komis:index}
+
+komis_cars:
+  path: /cars
+  defaults: {_controller: AppBundle:Komis:Cars}
