@@ -11,6 +11,7 @@ namespace AppBundle\Form;
 
 use AppBundle\Entity\Car;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -21,17 +22,35 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CarType extends AbstractType
 {
+    /**
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     *
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('mark',TextType::class,['label'=>'Marka'])
             ->add('model',TextType::class,['label'=>'Model'])
             ->add('color', TextType::class,['label'=>'Kolor'])
-            //->add('date_production', DateType::class,['label'=>'Data produkcji'])
-            ->add('engine', TextType::class,['label'=>'silnik'])
+            ->add('date_production', DateType::class,['label'=>'Data produkcji'])
+            ->add('engine', TextType::class,['label'=>'pojemność silnika'])
             ->add('horsepower', TextType::class,['label'=>'ilość koni'])
-            ->add('fuel', TextType::class,['label'=>'rodzaj paliwa'])
-            ->add('body', TextType::class,['label'=>'rodzaj nadwozia'])
+            ->add('fuel', ChoiceType::class, array(
+                'choices'=>array(
+                    'diesel'=>'diesel',
+                    'benzyna'=>'petrol',
+                    'benzyna+gaz'=>'petrolGas'
+                )
+            ))
+            ->add('body', ChoiceType::class, array(
+                'choices'=>array(
+                    'sedan'=>'sedan',
+                    'combi'=>'kombi',
+                    'hatchback'=>'hatchback',
+                    'cabriolet'=>'cabriolet'
+                )
+            ))
             ->add('price', NumberType::class, ['label'=>'Cena'])
             ->add('description', TextareaType::class, ['label'=>'Opis'])
             ->add('submit', SubmitType::class, ['label'=>'Dodaj']);
