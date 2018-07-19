@@ -14,6 +14,26 @@ car_add:
   path: /cars/add
   defaults: {_controller: AppBundle:Car:add}
 
+car_edit:
+  path: /cars/edit/{id}
+  defaults: {_controller: AppBundle:Car:edit}
+
+car_delete:
+  path: /cars/delete/{id}
+  defaults: {_controller: AppBundle:Car:delete}
+
+car_details:
+  path: /cars/details/{id}
+  defaults: {_controller: AppBundle:Car:details}
+
+mechanic_calendar:
+  path: /calendar/{month}/{year}
+  defaults: {_controller: AppBundle:Mechanic:calendar, month: 7, year: 2018}
+  methods:  [GET]
+
+ancarebeca_fullcalendar:
+    resource: "@FullCalendarBundle/Resources/config/routing.yml"
+
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 

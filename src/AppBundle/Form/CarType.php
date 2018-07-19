@@ -13,6 +13,7 @@ use AppBundle\Entity\Car;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -30,10 +31,13 @@ class CarType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('mark',TextType::class,['label'=>'Marka'])
-            ->add('model',TextType::class,['label'=>'Model'])
-            ->add('color', TextType::class,['label'=>'Kolor'])
-            ->add('date_production', DateType::class,['label'=>'Data produkcji'])
+            ->add('mark',TextType::class,['label'=>'Marka*'])
+            ->add('model',TextType::class,['label'=>'Model*'])
+            ->add('color', TextType::class,['label'=>'Kolor*'])
+            ->add('date_production', DateType::class,array(
+                'widget'=>'choice',
+                'years'=>range(date('Y')-30,date('Y'))
+            ))
             ->add('engine', TextType::class,['label'=>'pojemność silnika'])
             ->add('horsepower', TextType::class,['label'=>'ilość koni'])
             ->add('fuel', ChoiceType::class, array(
@@ -51,12 +55,14 @@ class CarType extends AbstractType
                     'cabriolet'=>'cabriolet'
                 )
             ))
-            ->add('price', NumberType::class, ['label'=>'Cena'])
+            ->add('price', NumberType::class, ['label'=>'Cena*'])
             ->add('description', TextareaType::class, ['label'=>'Opis'])
-            ->add('submit', SubmitType::class, ['label'=>'Dodaj']);
+            ->add('image', FileType::class, ['label'=>'Wgraj zdjęcie'])
+            ->add('submit', SubmitType::class, ['label'=>'Zapisz']);
     }
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(['data_class'=>Car::class]);
     }
+
 }

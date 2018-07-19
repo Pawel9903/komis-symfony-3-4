@@ -1,0 +1,16 @@
+{% extends 'templates/base.html.twig' %}
+    {% block body %}
+        <img src="{% if car.image is not null %} {{ '/images/car/' ~ car.image}} {% else %} {{ '/images/car/noimage.jpeg' }} {% endif %}">
+        <p><span>Kolor: </span>{{ car.color }}</p>
+        <p><span>Silnik: </span>{{ car.engine }}</p>
+        <p><span>Ilość koni: </span>{{ car.horsepower }}</p>
+        <p><span>Rodzaj paliwa: </span>{{ car.fuel }}</p>
+        <p><span>Rodzaj nadwozia: </span>{{ car.body }}</p>
+        <p><span>Opis: </span>{{ car.description }}</p>
+        {% if is_granted("ROLE_ADMIN") %}
+            <a class="btn btn-outline-danger" href="{{ url('car_edit', {"id": car.id}) }}">Edytuj</a>
+            <a class="btn btn-outline-danger" href="{{ url('car_delete', {"id": car.id }) }}">Usuń</a>
+        {% else %}
+            <a class="btn btn-outline-danger" href="">Zainteresowany</a>
+        {% endif %}
+    {% endblock %}

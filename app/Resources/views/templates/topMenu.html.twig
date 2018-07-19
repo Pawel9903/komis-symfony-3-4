@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-danger bg-light">
-    <a class="navbar-brand" href="#">Komis samochodwy</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+    <a class="navbar-brand" href="#">Komis PG</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -14,9 +14,24 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ url('car_add') }}">Dodaj samochód</a>
             </li>
+                {% if is_granted("ROLE_ADMIN") %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('car_add') }}">Konto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('car_add') }}">Wyloguj się</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('fos_user_security_login') }}">Logowanie</a>
+                    </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="{{ url('fos_user_registration_register') }}">Rejestracja</a>
+            </li>
+                {% endif %}
         </ul>
         <span class="navbar-text">
-      Wszystko dla Ciebie
+      Komis samochodwy oraz naprawa
     </span>
     </div>
 </nav>

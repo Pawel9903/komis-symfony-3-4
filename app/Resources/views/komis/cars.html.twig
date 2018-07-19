@@ -5,15 +5,11 @@
 
 {% for car in cars %}
     <div class="my-5 border">
+        <img src="{% if car.image is not null %} {{ '/images/car/' ~ car.image}} {% else %} {{ '/images/car/noimage.jpeg' }} {% endif %}">
         <p><span>Marka: </span>{{ car.mark }}</p>
         <p><span>Model: </span>{{ car.model }}</p>
         <p><span>Cena: </span>{{ car.price }}</p>
-        <p><span>Kolor: </span>{{ car.color }}</p>
-        <p><span>Silnik: </span>{{ car.engine }}</p>
-        <p><span>Ilość koni: </span>{{ car.horsepower }}</p>
-        <p><span>Rodzaj paliwa: </span>{{ car.fuel }}</p>
-        <p><span>Rodzaj nadwozia: </span>{{ car.body }}</p>
-        <p><span>Opis: </span>{{ car.description }}</p>
+        <a class="btn btn-outline-danger" href="{{ url('car_details', {"id": car.id}) }}">Sprawdź</a>
     </div>
 {% endfor %}
 

@@ -12,23 +12,11 @@
                 <a class="nav-link" href="{{ url('car_cars') }}">Ogłoszenia</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('car_add') }}">Dodaj samochód</a>
+                <a class="nav-link" href="{{ url('fos_user_security_login') }}">Logowanie</a>
             </li>
-                {% if is_granted("ROLE_ADMIN") %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('car_add') }}">Konto</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('car_add') }}">Wyloguj się</a>
-                    </li>
-                {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('fos_user_security_login') }}">Logowanie</a>
-                    </li>
-                    <li class="nav-item">
+            <li class="nav-item">
                 <a class="nav-link" href="{{ url('fos_user_registration_register') }}">Rejestracja</a>
             </li>
-                {% endif %}
         </ul>
         <span class="navbar-text">
       Komis samochodwy oraz naprawa

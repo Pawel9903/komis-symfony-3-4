@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Car
@@ -25,6 +26,10 @@ class Car
      * @var string
      *
      * @ORM\Column(name="mark", type="string", length=255)
+     *
+     * @Assert\NotBlank(
+     *     message="Pole marka nie możę być puste"
+     * )
      */
     private $mark;
 
@@ -32,6 +37,10 @@ class Car
      * @var string
      *
      * @ORM\Column(name="model", type="string", length=255)
+     *
+     * @Assert\NotBlank(
+     *     message="Pole model nie możę być puste"
+     * )
      */
     private $model;
 
@@ -39,6 +48,10 @@ class Car
      * @var string
      *
      * @ORM\Column(name="color", type="string", length=255)
+     *
+     * @Assert\NotBlank(
+     *     message="Pole kolor nie możę być puste"
+     * )
      */
     private $color;
 
@@ -74,6 +87,10 @@ class Car
      * @var float
      *
      * @ORM\Column(name="price", type="float")
+     *
+     * @Assert\NotBlank(
+     *     message="Podaj cenę"
+     * )
      */
     private $price;
 

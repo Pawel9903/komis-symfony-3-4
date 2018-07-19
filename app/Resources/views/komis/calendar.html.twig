@@ -1,0 +1,20 @@
+{% extends 'templates/base.html.twig' %}
+{% block body %}
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th colspan="12" scope="col">{{ nameMonth }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        
+            {% for i in 1..lastday %}
+                    <td class="c-td"><small>{{ i }}</small><br><a href="#">test</a></td>
+                {% if i%6 == 0 %}
+                    <tr class="">
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
