@@ -11,5 +11,8 @@ namespace AppBundle\Services;
 
 class GlobalFunctionService
 {
-
+    public function generateUniqueFileName()
+    {
+        return md5(uniqid());
+    }
 }
