@@ -11,16 +11,27 @@ namespace AppBundle\Controller;
 
 use AppBundle\Services\CalendarService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class MechanicController extends Controller
 {
-    public function calendarAction()
+    public function calendarAction($month, $year, Request $request)
     {
+        $month = $request->get('month');
+        $year = $request->get('year');
         $today = new \DateTime("now");
-        $year = (int)$today->format('Y');
-        $month = (int)$today->format('m');
+        $todayDay = $today->format("d");
+
+        $date = new \DateTime($year."/".$month."/".$todayDay);
+
         $calendar = $this->get(CalendarService::class);
-        $calendar->getCalendar($month);
-        return $this->render('komis/calendar.html.twig', ['lastday'=>$calendar->getDaysInMonth(),'nameMonth'=>$calendar->getActualMonth(),'year'=>$year, 'month'=>$month]);
+        $calendar->getCalendar((int)$date->format("m"));
+
+        return $this->render('komis/calendar.html.twig', [
+            'lastDay'=>$calendar->getDaysInMonth(),
+            'nameMonth'=>$calendar->getActualMonth(),
+            'year'=>$year,
+            'month'=>$month,
+        ]);
     }
 }

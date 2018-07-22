@@ -1,16 +1,30 @@
 {% extends 'templates/base.html.twig' %}
+
 {% block body %}
+
+    <a href="{{ (month > 0)? path("mechanic_calendar",{ "month" : month-1 }) : path("mechanic_calendar",{ "month" : 12 }) }}"> << </a>
+    <span> miesiąc </span>
+    <a href="{{ (month < 12)? path("mechanic_calendar",{ "month" : month+1 }) : path("mechanic_calendar",{ "month" : 1 }) }}"> >> </a>
     <table class="table table-bordered">
         <thead>
         <tr>
             <th colspan="12" scope="col">{{ nameMonth }}</th>
         </tr>
+        <tr class="">
+            <td class="" scope="col">pon</td>
+            <td class="" scope="col">wt</td>
+            <td class="" scope="col">śr</td>
+            <td class="" scope="col">cz</td>
+            <td class="" scope="col">pt</td>
+            <td class="" scope="col">sob</td>
+            <td class="" scope="col">nd</td>
+        </tr>
         </thead>
         <tbody>
-        
-            {% for i in 1..lastday %}
+
+            {% for i in 1..lastDay %}
                     <td class="c-td"><small>{{ i }}</small><br><a href="#">test</a></td>
-                {% if i%6 == 0 %}
+                {% if i%7 == 0 %}
                     <tr class="">
                     </tr>
                 {% endif %}

@@ -12,7 +12,6 @@ namespace AppBundle\Services;
 class CalendarService
 {
     private $monthNames = array('Styczen','Luty','Marzec','Kwiecien','Maj','Czerwiec','Lipiec','Sierpien','Wrzesien','Pazdziernik','Listopad','Grudzien');
-    private $dayNames = array('ND','PN','TW','SR','CZ','PT','SO');
     private $currentDate;
     private $currentDay;
     private $currentMonth;
@@ -28,7 +27,6 @@ class CalendarService
         $this->daysInMonth = (int)$this->currentDate->modify('last day of this month')->format('d');
         $numberOfMonth = (int)$this->currentDate->format('m');
         $this->actualMonth = $this->monthNames[$numberOfMonth-1];
-
     }
 
     /**

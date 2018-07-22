@@ -27,8 +27,8 @@ car_details:
   defaults: {_controller: AppBundle:Car:details}
 
 mechanic_calendar:
-  path: /calendar/{month}/{year}
-  defaults: {_controller: AppBundle:Mechanic:calendar, month: 7, year: 2018}
+  path: /calendar/{year}/{month}
+  defaults: {_controller: AppBundle:Mechanic:calendar, year: 2018, month: 6}
   methods:  [GET]
 
 ancarebeca_fullcalendar:

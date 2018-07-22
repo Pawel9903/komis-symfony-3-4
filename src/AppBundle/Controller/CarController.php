@@ -56,7 +56,7 @@ class CarController extends Controller
                 $entityManager->persist($car);
                 $entityManager->flush();
 
-                $this->addFlash("success", "Contact {$car->getMark()} has been successfully added");
+                $this->addFlash("success", "Car {$car->getMark()} has been successfully added");
 
 
                 return $this->redirectToRoute("car_cars");
